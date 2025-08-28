@@ -1,0 +1,354 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 7px;
+  margin-bottom: 8px;
+}
+
+/* Navbar title */
+.navbar h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* List styles for horizontal layout */
+.list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+}
+
+/* Shared button styles */
+.theme-button,
+.Run-button,
+.save-button,
+.dropdown-toggle {
+  padding: 6px 12px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Profile button (circular) */
+.profile-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Icon image (before button text) */
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  gap: 6px;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #222;
+  border: 1px solid #444;
+  padding: 6px 0;
+  margin-top: 4px;
+  list-style: none;
+  width: 160px;
+  z-index: 1000;
+}
+
+/* Dropdown list item */
+.dropdown-menu li {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.dropdown-menu li:hover {
+  background-color: #7a7a7a;
+}
+
+/* Timer section */
+.timer-section {
+  padding: 0px 4px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  height: 36px;
+  cursor: pointer;
+  margin-left: 12px;
+  align-items: center;
+}
+
+.timer-controls {
+  display: flex;
+  background-color: #333;
+  border-radius: 5px;
+  margin-left: 8px;
+  padding: 4px 8px;
+  align-items: center;
+}
+
+.play-pause-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px;
+}
+
+.timer-display {
+  font-size: 20px;
+  color: white;
+  min-width: 48px;
+}
+
+.reset-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 15px;
+}
+
+/* Wrapper for transition effect */
+.timer-controls-wrapper {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.4s ease, opacity 0.4s ease;
+}
+
+.timer-controls-wrapper.show {
+  max-width: 300px; /* enough space for controls */
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.separator-line {
+  width: 1px;
+  background-color: white;
+  align-self: stretch; 
+}
+
+.timer-controls .icon {
+  width: 25px;  /* or any size you prefer */
+  height: 25px;
+}
+
+.timer-section .icon {
+  margin: 0;
+  width: 25px;  /* or any size you prefer */
+  height: 25px;
+}
+
+.save-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.save-modal {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  min-width: 320px;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.save-modal h3 {
+  margin-bottom: 1.2rem;
+  font-size: 30px;
+  font-weight: bold;
+  color: #0b883f;
+}
+
+.save-input {
+  padding: 0.75rem 1rem;
+  width: 90%;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #2c2c2c;
+  color: white;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.save-modal-buttons button {
+  margin: 0 10px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 700;
+}
+
+.modal-save-btn {
+  background-color: #11a350;
+  color: white;
+  
+}
+
+.modal-cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+
+}
+
+.profile-img-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-dropdown-wrapper {
+  position: relative;
+}
+
+.profile-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: -20px; /* Shift dropdown slightly to the right */
+  background-color: #333;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  list-style: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 140px; /* Increase width for better spacing */
+}
+
+.profile-dropdown-menu li {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.profile-dropdown-menu li:hover {
+  background-color: #444;
+}
+
+.profile-dropdown-menu li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.profile-dropdown-menu li:hover {
+  background-color: #494949;
+}
+
+/* Themes  */
+
+.theme-dropdown-horizontal {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 24px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 90vw; 
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.theme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  width: 200px;
+}
+
+.theme-icon-large {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.theme-name {
+  font-size: 15px;
+  text-align: center;
+}
+
+.theme-option:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
