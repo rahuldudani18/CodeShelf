@@ -15,7 +15,7 @@ function Navbar() {
     const [showSaveModal, setShowSaveModal] = useState(false);
     const [filename, setFilename] = useState('');
     const [profileImage, setProfileImage] = useState('/public/user.png');
-    const { setLanguage, runCode, code } = useCode();
+    const { setLanguage, runCode, code, setCode } = useCode();
     const navigate = useNavigate();
     const { isSignedIn, signOut } = useAuth();
     const { user } = useUser();
@@ -64,6 +64,32 @@ function Navbar() {
         }
         return () => clearInterval(timer);
     }, [isRunning]);
+
+    useEffect(() => {
+        if (isSignedIn && user) {
+            const pending = localStorage.getItem("pendingSave");
+            if (pending) {
+                const { code: savedCode, selectedLang } = JSON.parse(pending);
+
+                // Restore code + language into context
+                if (savedCode) {
+                    setCode(savedCode);
+                }
+                if (selectedLang) {
+                    setLanguage(selectedLang.toLowerCase());
+                }
+
+                // Open the save modal automatically
+                setTimeout(() => {
+                    setShowSaveModal(true);
+                }, 300);
+
+                // Clean up
+                localStorage.removeItem("pendingSave");
+            }
+        }
+    }, [isSignedIn, user, setCode, setLanguage]);
+
 
 
     const formatTime = (seconds) => {
@@ -114,11 +140,17 @@ function Navbar() {
         }
 
         if (!isSignedIn) {
-            navigate('/signin');
+            // Save the code + selected language in localStorage
+            localStorage.setItem("pendingSave", JSON.stringify({
+                code,
+                selectedLang,
+            }));
+            navigate('/signin'); // Clerk login
         } else {
             setShowSaveModal(true);
         }
     };
+
 
     const handleSaveToDB = async () => {
         if (!filename.trim()) {
@@ -163,7 +195,7 @@ function Navbar() {
         <div className="navbar">
             <h1>CodeShelf</h1>
             <ul className="list">
-            
+
                 <li style={{ display: 'flex', alignItems: 'center' }}>
                     <div className="custom-dropdown">
                         <button
